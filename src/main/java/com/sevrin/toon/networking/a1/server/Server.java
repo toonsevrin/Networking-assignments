@@ -42,6 +42,7 @@ public class Server implements Application {
             PrintWriter output = new PrintWriter(client.getOutputStream(), true);
             String hexRepresentation = Integer.toHexString(input.readInt());
             System.out.println("Sending " + hexRepresentation);
+            Thread.sleep(1000);//simulate processing
             output.println(hexRepresentation);
         }catch (Exception e){
             e.printStackTrace();

@@ -4,4 +4,5 @@ public interface InputProvider {
     String getHost();
     int getPort();
     int getNumber();
+    int getMode();
 }

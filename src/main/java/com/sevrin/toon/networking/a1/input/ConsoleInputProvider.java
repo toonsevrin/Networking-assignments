@@ -16,6 +16,11 @@ public class ConsoleInputProvider implements InputProvider{
         return Integer.valueOf(fetchString("Please provide a number: "));
     }
 
+    @Override
+    public int getMode() {
+        return Integer.valueOf(fetchString("Please provide a mode (0 = normal, 1 = DoS): "));
+    }
+
     private String fetchString(String query){
         System.out.println(query);
         return new Scanner(System.in).nextLine();

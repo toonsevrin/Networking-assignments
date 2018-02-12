@@ -20,7 +20,24 @@ public class Client implements Application {
         try {
             new Thread(() -> {
                 while (!terminated) {
-                    request(inputProvider.getHost(), inputProvider.getPort(), inputProvider.getNumber());
+                    String host = inputProvider.getHost();
+                    int port = inputProvider.getPort();
+                    int number = inputProvider.getNumber();
+                    int mode = inputProvider.getMode();
+                    if(mode == 1) {
+                        Thread[] threads = new Thread[20];
+                        for (int i = 0; i < 20; i++) {
+                            threads[i] = new Thread(() -> request(host, port, number));//Thread pool would probably have been better here but whatever.
+                            threads[i].start();
+                        }
+                        //Hardcoded wait function
+                        for(int i = 0; i < 20; i++)
+                            try {
+                                threads[i].join();
+                            } catch (InterruptedException e) {}
+                    }else{
+                        request(host, port, number);
+                    }
                 }
 
             }).start();
@@ -29,7 +46,9 @@ public class Client implements Application {
 
     private void request(String host, int port, int number){
         try {
+
             Socket socket = new Socket(InetAddress.getByName(host), port);
+            Thread.sleep(1000);
 
             CompletableFuture<String> responseHandler = new CompletableFuture<String>();
 
@@ -37,6 +56,7 @@ public class Client implements Application {
             ReceiverThread receiverThread = new ReceiverThread(socket, responseHandler);
             System.out.println("Opening socket...");
             clientThread.start();
+
             receiverThread.start();
 
             clientThread.join();
