@@ -3,6 +3,7 @@ package com.sevrin.toon.networking.a1;
 import com.sevrin.toon.networking.a1.client.Client;
 import com.sevrin.toon.networking.a1.input.ConsoleInputProvider;
 import com.sevrin.toon.networking.a1.input.InputProvider;
+import com.sevrin.toon.networking.a1.server.Server;
 
 public class Main {
     private static Application app;

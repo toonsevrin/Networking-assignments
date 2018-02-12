@@ -1,4 +1,6 @@
-package com.sevrin.toon.networking.a1;
+package com.sevrin.toon.networking.a1.server;
+
+import com.sevrin.toon.networking.a1.Application;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
