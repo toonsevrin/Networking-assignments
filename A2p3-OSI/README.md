@@ -3,7 +3,7 @@
 ## Repeater - Layer 1: Physical
 "In telecommunications, a repeater is an electronic device that receives a signal and retransmits it." - Wikipedia
 
-Because these devices work with the actual physical signals and don't interpret any data (headers...), they reside on the first layer.
+Because these devices work with the actual physical signals and don't interpret any data (except the preamble, which is L1), they reside on the first layer.
 
 
 
