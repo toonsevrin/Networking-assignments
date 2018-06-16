@@ -18,10 +18,7 @@ Note 3: Though both 100Mbps and Gigabit ethernet keep the preamble for compatibi
 Note 4: Before sending the jam signal, nodes always complete the preamble (that way all nodes will notice it). The node will continue to send 1,0s after that until the signal is 96 bits long (same reason).
 
 ### Why is there a source address in ethernet
-One reason could be that you do not require service discovery (eg. ARP) to reply to a packet on the same network.
-
-Not sure if there are other reasons, the first one is pretty convincing (think tcp fe.).
-
+One reason could be that you do not require service discovery (eg. ARP) to reply to a packet on the same network. Another reason could be switches, to build a table of addresses. 
 
 ### Why is there no end-of-frame delimiter in ethernet
 The end of a frame is usually indicated by the end-of-data-stream symbol at the physical layer or by loss of the carrier signal. So this is handled at L1 (usually in the extra values of a 4B/5B or 8B/10B encoding scheme.
@@ -35,7 +32,10 @@ Two addresses for the APs (See distributed systems), these are A2 and A3.
 A1 is the destination (this is the first address because it needs to be read quickly), A4 is the source.
 
 ### End of frame marking?
+The RTS message contains a duration.
 
 ### Preamble?
-Depends on physical layer. Either a 'synch' (80bit preamble sequence) or a SFD (16 bit pattern)
+Depends on physical layer. Either a 'synch' (80bit preamble sequence) or a SFD (16 bit pattern).
+
+This could be different depending on the noise of the medium (fe. DSSS, FHSS).
 
