@@ -7,11 +7,16 @@ Kerberos consists of a client, server and a Key Distribution Center (KDC). Every
 
 
 ## Describe the steps of the protocol
+[Super easy to understand video](https://www.youtube.com/watch?v=kp5d8Yv3-0c), let's watch this during the exam..
 
-https://searchsecurity.techtarget.com/definition/Kerberos
+Less easy but written: https://searchsecurity.techtarget.com/definition/Kerberos
 
-1. Client requests access to a service from an auth server.
-2. Server receives clients key from KDC database (if non existent, auth fails here).
-3. Auth server generates session key and a ticket granting ticket (timestamped and encrypted), these are sent to client encrypted with the client key.
+## Why is Kerberos not used on toledo?
+1. We're using ssl anyways so toledo is authenticated already (kerberos is a private-key, trusted-third-party authentication system while ssl is a public-key, certificate-based authentication system).
+2. KDC stores keys of users (though these could be derived from a hashed password to improve security).
 
-...
+SSL is superior to kerberos because there's no accessible trusted third party (only certificate)
+
+More info: http://www.di-srv.unisa.it/~ads/corso-security/www/CORSO-0001/kerberos/ref/kerberos-faq.html#kerbvsssl
+
+TODO: Check how toledo does authentication on third party services
